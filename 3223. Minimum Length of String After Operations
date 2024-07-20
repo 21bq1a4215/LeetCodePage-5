@@ -1,0 +1,11 @@
+from collections import Counter
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        if len(s)<=2:return len(s)
+        d=Counter(s).values()
+        l=[]
+        for k in d:
+            while k>=3:k=k//3+k%3
+            l.append(k)
+        return sum(l)
+
