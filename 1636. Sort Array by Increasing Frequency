@@ -1,0 +1,28 @@
+class Solution:
+    def frequencySort(self, nums: List[int]) -> List[int]:
+        from collections import  Counter
+        nums.sort(reverse=True)
+        l=[]
+        for i,j in sorted(Counter(nums).items(),key=lambda item:item[1]):l=l+[i]*j
+        return l
+    
+    
+    
+        #approach 2
+        l=[]
+        v=[]
+        sol=[]
+        for k in sorted(nums,reverse=True):
+            if k not in l :
+                l.append(k)
+                v.append(nums.count(k))
+        m=max(v)+1
+        for k in range(len(l)):
+            mi=min(v)
+            i=v.index(mi)
+            sol=sol+[l[i]]*mi
+            v[i]=m
+            
+        return sol
+            
+        
